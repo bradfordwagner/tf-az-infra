@@ -35,7 +35,7 @@ resource "azurerm_kubernetes_cluster" "infra" {
     #   vm_size    = "Standard_D2_v2"
     enable_auto_scaling  = true
     min_count            = 1
-    max_count            = 3
+    max_count            = 1
     orchestrator_version = "1.21.2"
   }
 
