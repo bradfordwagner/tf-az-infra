@@ -1,3 +1,4 @@
+
 provider "azurerm" {
   features {}
 }
@@ -30,12 +31,14 @@ resource "azurerm_kubernetes_cluster" "infra" {
   }
 
   default_node_pool {
-    name                 = "default"
-    vm_size              = "standard_d2a_v4"
-    #   vm_size    = "Standard_D2_v2"
-    enable_auto_scaling  = true
-    min_count            = 1
-    max_count            = 1
+    name       = "default"
+    vm_size    = "standard_d2a_v4"
+    node_count = 1
+
+    # if using scaling
+    #enable_auto_scaling  = false
+    #min_count            = 1
+    #max_count            = 2
     orchestrator_version = "1.21.2"
   }
 
