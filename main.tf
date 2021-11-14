@@ -32,7 +32,8 @@ resource "azurerm_kubernetes_cluster" "infra" {
 
   default_node_pool {
     name       = "default"
-    vm_size    = "standard_d2a_v4"
+    vm_size    = "Standard_B2ms" # burstables
+#   vm_size    = "standard_d2a_v4"
     node_count = 1
 
     # if using scaling
