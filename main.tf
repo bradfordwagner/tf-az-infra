@@ -50,5 +50,6 @@ resource "azurerm_kubernetes_cluster" "infra" {
 
   tags = {
     Environment = "dev"
+    Test = "testing"
   }
 }
