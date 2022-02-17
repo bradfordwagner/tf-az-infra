@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "infra" {
     #enable_auto_scaling  = false
     #min_count            = 1
     #max_count            = 2
-    orchestrator_version = "1.21.2"
+    orchestrator_version = "1.21.9"
   }
 
   identity {
