@@ -19,7 +19,7 @@ resource "azurerm_kubernetes_cluster" "infra" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "bradfordwagner"
-  kubernetes_version  = "1.21.2"
+  kubernetes_version  = "1.21.9"
 
   network_profile {
     network_plugin    = "kubenet"
