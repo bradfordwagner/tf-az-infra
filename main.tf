@@ -19,7 +19,7 @@ resource "azurerm_kubernetes_cluster" "infra" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "bradfordwagner"
-  kubernetes_version  = "1.21.9"
+  kubernetes_version  = var.k8s_version
 
   network_profile {
     network_plugin    = "kubenet"
@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "infra" {
     #enable_auto_scaling  = false
     #min_count            = 1
     #max_count            = 2
-    orchestrator_version = "1.21.9"
+    orchestrator_version = var.k8s_version
   }
 
   identity {
