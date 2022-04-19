@@ -40,8 +40,8 @@ resource "azurerm_kubernetes_cluster" "infra" {
   }
 
   identity {
-    type                      = "UserAssigned"
-    user_assigned_identity_id = azurerm_user_assigned_identity.aks.id
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.aks.id]
   }
 
   tags = {
