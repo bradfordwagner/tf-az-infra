@@ -1,50 +1,26 @@
-
 provider "azurerm" {
   features {}
 }
 
+# resource group for all infrastructure to be added to
 resource "azurerm_resource_group" "rg" {
   name     = "bradfordwagner-infra"
-  location = var.region
+  location = "eastus2"
 }
 
-resource "azurerm_user_assigned_identity" "aks" {
-  name                = "aks"
+# create a kubernetes cluster
+module "k8s" {
+  depends_on          = [azurerm_resource_group.rg]
+  source              = "./modules/k8s_cluster"
+  enabled             = false
   resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
 }
 
-resource "azurerm_kubernetes_cluster" "infra" {
-  name                = "infra"
-  location            = azurerm_resource_group.rg.location
+# create a kubernetes cluster
+module "blob_storage" {
+  depends_on          = [azurerm_resource_group.rg]
+  source              = "./modules/blob_storage"
+  enabled             = true
   resource_group_name = azurerm_resource_group.rg.name
-  dns_prefix          = "bradfordwagner"
-  kubernetes_version  = var.k8s_version
-
-  network_profile {
-    network_plugin    = "kubenet"
-    load_balancer_sku = "standard" # basic made it unable to connect k9s
-  }
-
-  default_node_pool {
-    name       = "default"
-    vm_size    = "Standard_B4ms" # burstables
-#   vm_size    = "standard_d2a_v4"
-    node_count = var.node_count
-
-    # if using scaling
-    #enable_auto_scaling  = false
-    #min_count            = 1
-    #max_count            = 2
-    orchestrator_version = var.k8s_version
-  }
-
-  identity {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.aks.id]
-  }
-
-  tags = {
-    Environment = "dev"
-  }
 }
+
