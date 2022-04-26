@@ -9,7 +9,7 @@ data azurerm_resource_group "target" {
 # setup storage account
 resource "azurerm_storage_account" "blob" {
   count                     = var.enabled ? 1 : 0
-  name                      = "blubblubblub"
+  name                      = var.name
   account_tier              = "Standard"
   account_kind              = "BlobStorage"
   account_replication_type  = "GRS"

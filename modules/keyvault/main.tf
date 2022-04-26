@@ -7,7 +7,7 @@ data azurerm_resource_group "target" {
 }
 
 resource "azurerm_key_vault" "keyvault" {
-  name                        = var.keyvault_name
+  name                        = var.name
   resource_group_name         = data.azurerm_resource_group.target.name
   location                    = data.azurerm_resource_group.target.location
   enabled_for_disk_encryption = true

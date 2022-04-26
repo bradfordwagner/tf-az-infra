@@ -22,6 +22,7 @@ module "blob_storage" {
   source              = "./modules/blob_storage"
   enabled             = true
   resource_group_name = azurerm_resource_group.rg.name
+  name                = "blubblubblub"
 }
 
 module "keyvault" {
@@ -29,5 +30,5 @@ module "keyvault" {
   source              = "./modules/keyvault"
   enabled             = true
   resource_group_name = azurerm_resource_group.rg.name
-  keyvault_name       = "bradfordwagner-test1"
+  name                = "bradfordwagner-test1"
 }
