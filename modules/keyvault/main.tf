@@ -6,7 +6,7 @@ data azurerm_resource_group "target" {
   name = var.resource_group_name
 }
 
-resource "azurerm_key_vault" "example" {
+resource "azurerm_key_vault" "keyvault" {
   name                        = var.keyvault_name
   resource_group_name         = data.azurerm_resource_group.target.name
   location                    = data.azurerm_resource_group.target.location
