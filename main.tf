@@ -28,7 +28,7 @@ module "blob_storage" {
 module "keyvault" {
   depends_on          = [azurerm_resource_group.rg]
   source              = "./modules/keyvault"
-  enabled             = true
+  enabled             = false
   resource_group_name = azurerm_resource_group.rg.name
   name                = "bradfordwagner-test1"
 }
