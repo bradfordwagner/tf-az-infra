@@ -7,6 +7,7 @@ data azurerm_resource_group "target" {
 }
 
 resource "azurerm_key_vault" "keyvault" {
+  count                       = var.enabled ? 1 : 0
   name                        = var.name
   resource_group_name         = data.azurerm_resource_group.target.name
   location                    = data.azurerm_resource_group.target.location
