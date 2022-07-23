@@ -16,7 +16,7 @@ module "k8s" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-# create a kubernetes cluster
+# create a blub storage
 module "blob_storage" {
   depends_on          = [azurerm_resource_group.rg]
   source              = "./modules/blob_storage"
