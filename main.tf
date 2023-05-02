@@ -20,7 +20,7 @@ module "k8s" {
 module "blob_storage" {
   depends_on          = [azurerm_resource_group.rg]
   source              = "./modules/blob_storage"
-  enabled             = true
+  enabled             = false
   resource_group_name = azurerm_resource_group.rg.name
   name                = "blubblubblub"
 }
