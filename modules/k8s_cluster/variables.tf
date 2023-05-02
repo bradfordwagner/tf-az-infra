@@ -9,7 +9,7 @@ variable "resource_group_name" {
 
 variable "node_count" {
   type    = number
-  default = 1
+  default = 5
 }
 
 variable "k8s_version" {
