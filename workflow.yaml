@@ -12,7 +12,8 @@ spec:
       value: tags
       # value: branches
     - name: git_version
-      value: main
+      value: feature/develop
+      # value: main
   templates:
   - name: main
     inputs:
