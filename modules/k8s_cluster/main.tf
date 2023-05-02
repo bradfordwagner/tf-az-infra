@@ -26,7 +26,7 @@ resource "azurerm_kubernetes_cluster" "infra" {
 
   default_node_pool {
     name       = "default"
-    vm_size    = "Standard_B4ms" # burstables
+    vm_size    = "Standard_B8ms" # burstables
     node_count = var.node_count
 
     orchestrator_version = var.k8s_version
