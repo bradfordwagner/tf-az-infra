@@ -9,7 +9,8 @@ spec:
   arguments:
     parameters:
     - name: git_ref_type
-      value: branches
+      value: tags
+      # value: branches
     - name: git_version
       value: main
   templates:
