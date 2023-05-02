@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "rg" {
 module "k8s" {
   depends_on          = [azurerm_resource_group.rg]
   source              = "./modules/k8s_cluster"
-  enabled             = true
+  enabled             = false
   resource_group_name = azurerm_resource_group.rg.name
 }
 
